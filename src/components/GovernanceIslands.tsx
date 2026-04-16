@@ -16,7 +16,7 @@ interface GovernanceHeroProps {
 export function GovernanceHero({ base }: GovernanceHeroProps) {
   return (
     <HeroSection
-      title={<>Visdom<br /><span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Governance</span></>}
+      title={<>Visdom<br /><span className="bg-gradient-to-r from-red-500 to-rose-400 bg-clip-text text-transparent">Governance</span></>}
       subtitle="Visibility into AI-assisted work. Cost tracking attributed to the PR that caused it. Compliance evidence signed into one ledger — three pillars, one source of truth."
       actions={[
         { label: "Open TraceVault", href: "#tracevault", variant: "primary" },
