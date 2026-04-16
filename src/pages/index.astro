@@ -7,12 +7,12 @@ import {
   FeatureCard,
   StatusDiagram,
   ComparisonCard,
-  VisdomStrip,
 } from '@virtuslab/visdom-ui';
 import {
   GovernanceHero,
   PillarCards,
   GovernanceFaq,
+  GovernanceVisdomStrip,
 } from '../components/GovernanceIslands';
 
 const base = import.meta.env.BASE_URL;
@@ -344,15 +344,7 @@ const base = import.meta.env.BASE_URL;
   <div class="seal-divider" aria-hidden="true"></div>
 
   <!-- ============ Visdom Strip ============ -->
-  <VisdomStrip
-    products={[
-      { name: "ViDIA", role: "Context Fabric", href: "https://github.com/virtuslab/vidia" },
-      { name: "VCR", role: "Code Review", href: "https://virtuslab.github.io/visdom-code-review/" },
-      { name: "Testing", role: "Quality Assurance", href: "https://virtuslab.github.io/visdom-testing/" },
-      { name: "Security", role: "Sandbox & AppSec", href: "https://virtuslab.github.io/visdom-security/" },
-      { name: "Governance", role: "Visibility, Cost & Compliance", href: base, active: true },
-    ]}
-  />
+  <GovernanceVisdomStrip base={base} client:load />
 
   <!-- ============ CTA ============ -->
   <section class="cta-section">

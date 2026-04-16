@@ -4,6 +4,7 @@ import {
   HeroSection,
   FaqAccordion,
   FeatureCard,
+  VisdomStrip,
 } from "@virtuslab/visdom-ui";
 
 // ---- Hero ----
@@ -15,7 +16,7 @@ interface GovernanceHeroProps {
 export function GovernanceHero({ base }: GovernanceHeroProps) {
   return (
     <HeroSection
-      title="Visdom Governance"
+      title={<>Visdom<br /><span className="bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent">Governance</span></>}
       subtitle="Visibility into AI-assisted work. Cost tracking attributed to the PR that caused it. Compliance evidence signed into one ledger — three pillars, one source of truth."
       actions={[
         { label: "Open TraceVault", href: "#tracevault", variant: "primary" },
@@ -113,6 +114,62 @@ export function PillarCards() {
         meta="Ed25519 · append-only · framework-mapped"
       />
     </>
+  );
+}
+
+// ---- Visdom Strip ----
+
+interface GovernanceVisdomStripProps {
+  base: string;
+}
+
+export function GovernanceVisdomStrip({ base }: GovernanceVisdomStripProps) {
+  return (
+    <VisdomStrip
+      subtitle={
+        <>
+          Visdom Governance is one of four components in{" "}
+          <a href="https://virtuslab.com/services/visdom">Visdom</a>,
+          VirtusLab&apos;s AI-Native SDLC.
+        </>
+      }
+      products={[
+        {
+          role: "Context Fabric",
+          name: "ViDIA",
+          description: "Pre-indexed code expertise, dependency graphs, PR history",
+          href: "https://github.com/virtuslab/vidia",
+          active: false,
+        },
+        {
+          role: "Code Review",
+          name: "VCR",
+          description: "Multi-layered AI code review with risk assessment",
+          href: "https://virtuslab.github.io/visdom-code-review/",
+          active: false,
+        },
+        {
+          role: "Sandbox & AppSec",
+          name: "Security",
+          description: "Runtime containment and continuous application security scanning",
+          href: "https://virtuslab.github.io/visdom-security/",
+          active: false,
+        },
+        {
+          role: "Visibility, Cost & Compliance",
+          name: "Governance",
+          description: "Signed audit trail, cost attribution, policy enforcement",
+          href: base,
+          active: true,
+        },
+      ]}
+      footer={
+        <>
+          Read the thinking behind it:{" "}
+          <a href="https://virtuslab.com/services/visdom">The AI-Native SDLC series</a>
+        </>
+      }
+    />
   );
 }
 
