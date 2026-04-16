@@ -1,42 +1,10 @@
 "use client";
 
 import {
-  HeroSection,
   FaqAccordion,
   FeatureCard,
   VisdomStrip,
 } from "@virtuslab/visdom-ui";
-
-// ---- Hero ----
-
-interface GovernanceHeroProps {
-  base: string;
-}
-
-export function GovernanceHero({ base }: GovernanceHeroProps) {
-  return (
-    <HeroSection
-      title={<>Visdom<br /><span className="bg-gradient-to-r from-red-500 to-rose-400 bg-clip-text text-transparent">Governance</span></>}
-      subtitle="Visibility into AI-assisted work. Cost tracking attributed to the PR that caused it. Compliance evidence signed into one ledger — three pillars, one source of truth."
-      actions={[
-        { label: "Open TraceVault", href: "#tracevault", variant: "primary" },
-        { label: "What You Get", href: "#capabilities", variant: "outline" },
-      ]}
-      tagline={
-        <>
-          Part of{" "}
-          <a
-            href="https://virtuslab.com/services/visdom"
-            style={{ color: "inherit", textDecoration: "underline" }}
-          >
-            Visdom
-          </a>{" "}
-          · VirtusLab&apos;s AI-Native SDLC
-        </>
-      }
-    />
-  );
-}
 
 // ---- Three Pillars ----
 

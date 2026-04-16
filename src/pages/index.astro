@@ -9,7 +9,6 @@ import {
   ComparisonCard,
 } from '@virtuslab/visdom-ui';
 import {
-  GovernanceHero,
   PillarCards,
   GovernanceFaq,
   GovernanceVisdomStrip,
@@ -21,7 +20,21 @@ const base = import.meta.env.BASE_URL;
 
   <!-- ============ Hero ============ -->
   <section class="hero">
-    <GovernanceHero base={base} client:load />
+    <div class="hero__inner">
+      <h1 class="hero__headline">
+        Visdom<br />
+        <span class="hero__gradient">Governance</span>
+      </h1>
+      <p class="hero__subtitle">
+        Visibility into AI-assisted work. Cost tracking attributed to the PR that caused it.
+        Compliance evidence signed into one ledger &mdash; three pillars, one source of truth.
+      </p>
+      <div class="hero__buttons">
+        <a href="#tracevault" class="btn btn--primary">Open TraceVault</a>
+        <a href="#capabilities" class="btn btn--outline">What You Get</a>
+      </div>
+      <p class="hero__tagline">Part of <a href="https://virtuslab.com/services/visdom" class="hero__tagline-link">Visdom</a> &middot; VirtusLab's AI-Native SDLC</p>
+    </div>
   </section>
 
   <div class="seal-divider" aria-hidden="true"></div>
