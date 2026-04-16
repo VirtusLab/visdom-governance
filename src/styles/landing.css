@@ -220,6 +220,14 @@ body {
   border-radius: 999px;
   align-self: flex-start;
 }
+.pillar-card__icon {
+  width: 40px;
+  height: 40px;
+  color: var(--brand-red);
+  display: block;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
 .pillar-card__title {
   font-family: var(--font-heading);
   font-weight: 800;
