@@ -190,6 +190,14 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+.pillars-grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 900px) {
+  .pillars-grid--three {
+    grid-template-columns: 1fr;
+  }
+}
 .pillar-card {
   background: var(--white);
   border: 1px solid var(--light-gray);
@@ -304,6 +312,10 @@ body {
 .ledger-diagram__pill--log {
   background: rgba(59,130,246,0.22);
   color: #93c5fd;
+}
+.ledger-diagram__pill--cost {
+  background: rgba(16,185,129,0.22);
+  color: #6ee7b7;
 }
 
 /* ===== Compliance Frameworks (partner-style) ===== */

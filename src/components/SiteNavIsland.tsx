@@ -8,8 +8,8 @@ interface SiteNavIslandProps {
 
 const navLinks = (base: string) => [
   { label: 'Home', href: `${base}` },
+  { label: 'Capabilities', href: `${base}#capabilities` },
   { label: 'TraceVault', href: `${base}#tracevault` },
-  { label: 'Compliance', href: `${base}#compliance` },
   { label: 'FAQ', href: `${base}#faq` },
 ];
 
