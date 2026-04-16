@@ -201,6 +201,91 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
 
+  <!-- ============ Visibility: cost, usage, attribution ============ -->
+  <section class="visibility-section" id="visibility">
+    <div class="visibility-section__inner">
+      <div class="section-header-center">
+        <span class="ops-kicker ops-kicker--light">Visibility</span>
+        <h2 class="section-heading">See the invoice. Attributed to the work.</h2>
+      </div>
+      <p class="section-subtitle">
+        The same ledger that proves what AI did also answers how much it cost, which model burned
+        the tokens and which team, repo or PR the spend belongs to.
+      </p>
+
+      <div class="visibility-grid">
+        <ul class="visibility-features">
+          <li>
+            <span class="visibility-feature__title">Token usage trends</span>
+            <span class="visibility-feature__desc">Daily and weekly consumption, broken out by model, team and repo &mdash; not a single monthly number.</span>
+          </li>
+          <li>
+            <span class="visibility-feature__title">Cost tracking</span>
+            <span class="visibility-feature__desc">Spend attributed to session, author and PR, reconciled against vendor pricing as it changes.</span>
+          </li>
+          <li>
+            <span class="visibility-feature__title">Cache savings</span>
+            <span class="visibility-feature__desc">Hit-rate per model and per project &mdash; surface the prompts that are quietly doubling the bill.</span>
+          </li>
+          <li>
+            <span class="visibility-feature__title">Model distribution</span>
+            <span class="visibility-feature__desc">Which models the org actually uses. Side-by-side with the allowlist, so drift is visible.</span>
+          </li>
+          <li>
+            <span class="visibility-feature__title">Team &amp; author activity</span>
+            <span class="visibility-feature__desc">Adoption and throughput per team, with attribution by author &mdash; not a seat count.</span>
+          </li>
+          <li>
+            <span class="visibility-feature__title">AI share of code</span>
+            <span class="visibility-feature__desc">Git-integrated, line-level overlay: exactly what AI wrote, where it landed, in which commits.</span>
+          </li>
+        </ul>
+
+        <div class="dashboard-card" aria-hidden="true">
+          <div class="dashboard-card__header">
+            <span class="dashboard-card__title">tracevault &middot; dashboard</span>
+            <span class="dashboard-card__period">Apr 01 &rarr; Apr 16</span>
+          </div>
+          <div class="dashboard-row">
+            <span class="dashboard-row__label">tokens this month</span>
+            <span class="dashboard-row__value">4.12M</span>
+            <span class="dashboard-row__meta">&#8593; 18% wow</span>
+          </div>
+          <div class="dashboard-row">
+            <span class="dashboard-row__label">spend / budget</span>
+            <span class="dashboard-row__value">$412</span>
+            <span class="dashboard-row__meta">82% of $500 cap</span>
+          </div>
+          <div class="dashboard-bar">
+            <div class="dashboard-bar__fill" style="width:82%"></div>
+          </div>
+          <div class="dashboard-row">
+            <span class="dashboard-row__label">cache hit-rate</span>
+            <span class="dashboard-row__value">67%</span>
+            <span class="dashboard-row__meta">saved ~$181</span>
+          </div>
+          <div class="dashboard-row">
+            <span class="dashboard-row__label">model mix</span>
+            <span class="dashboard-row__value">claude 58% &middot; gpt 31% &middot; gemini 11%</span>
+          </div>
+          <div class="dashboard-row">
+            <span class="dashboard-row__label">top team</span>
+            <span class="dashboard-row__value">Platform</span>
+            <span class="dashboard-row__meta">1.8M tok &middot; $118</span>
+          </div>
+          <div class="dashboard-row">
+            <span class="dashboard-row__label">AI share / PR (p50)</span>
+            <span class="dashboard-row__value">47%</span>
+            <span class="dashboard-row__meta">cap 60%</span>
+          </div>
+          <div class="dashboard-card__footnote">
+            Community: basic traces + policy engine. Enterprise: full dashboard &amp; reports.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ What You Get (coverage across compliance, policy, cost) ============ -->
   <section class="partner-section" id="compliance">
     <div class="partner-section__inner">
