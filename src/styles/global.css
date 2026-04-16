@@ -23,6 +23,15 @@
   --max-width-doc: 48rem;
 }
 
+/* Override DS primary color — Governance uses red/crimson */
+:root {
+  --primary: oklch(0.577 0.245 27.325);          /* red-600 */
+  --primary-foreground: oklch(1 0 0);             /* white text on red */
+  --ring: oklch(0.577 0.245 27.325);
+  --accent: oklch(0.94 0.02 25);
+  --accent-foreground: oklch(0.45 0.15 25);
+}
+
 @layer base {
   body {
     @apply bg-white text-visdom-gray-600 antialiased;
