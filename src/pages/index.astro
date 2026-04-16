@@ -1,6 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/landing.css';
+import {
+  NumberedCard,
+  StatCard,
+  FeatureCard,
+  StatusDiagram,
+  ComparisonCard,
+  VisdomStrip,
+} from '@virtuslab/visdom-ui';
+import {
+  GovernanceHero,
+  PillarCards,
+  GovernanceFaq,
+} from '../components/GovernanceIslands';
 
 const base = import.meta.env.BASE_URL;
 ---
@@ -8,21 +21,7 @@ const base = import.meta.env.BASE_URL;
 
   <!-- ============ Hero ============ -->
   <section class="hero">
-    <div class="hero__inner">
-      <h1 class="hero__headline">
-        Visdom<br />
-        <span class="hero__gradient">Governance</span>
-      </h1>
-      <p class="hero__subtitle">
-        Visibility into AI-assisted work. Cost tracking attributed to the PR that caused it.
-        Compliance evidence signed into one ledger &mdash; three pillars, one source of truth.
-      </p>
-      <div class="hero__buttons">
-        <a href="#tracevault" class="btn btn--primary">Open TraceVault</a>
-        <a href="#capabilities" class="btn btn--outline">What You Get</a>
-      </div>
-      <p class="hero__tagline">Part of <a href="https://virtuslab.com/services/visdom" class="hero__tagline-link">Visdom</a> &middot; VirtusLab's AI-Native SDLC</p>
-    </div>
+    <GovernanceHero base={base} client:load />
   </section>
 
   <div class="seal-divider" aria-hidden="true"></div>
@@ -33,26 +32,26 @@ const base = import.meta.env.BASE_URL;
       <h2 class="problem-banner__heading">Your SDLC now has a non-human author</h2>
       <p class="problem-banner__subtitle">Auditors, engineering leaders and CFOs are asking questions your git history can't answer.</p>
       <div class="problem-banner__grid">
-        <div class="problem-banner__card">
-          <span class="problem-banner__num">01</span>
-          <strong class="problem-banner__title">Who wrote this line?</strong>
-          <p class="problem-banner__desc">EU AI Act &amp; SR 11-7 require attribution of model-assisted output. <code>git blame</code> points at the developer, not the model.</p>
-        </div>
-        <div class="problem-banner__card">
-          <span class="problem-banner__num">02</span>
-          <strong class="problem-banner__title">Was the policy enforced?</strong>
-          <p class="problem-banner__desc">Model allowlists, forbidden paths, token budgets, required tools &mdash; if enforcement isn't automated, it isn't happening.</p>
-        </div>
-        <div class="problem-banner__card">
-          <span class="problem-banner__num">03</span>
-          <strong class="problem-banner__title">Where did the spend go?</strong>
-          <p class="problem-banner__desc">AI invoices scale per token, per team, per cache miss. Without session-level attribution, FinOps is guesswork.</p>
-        </div>
-        <div class="problem-banner__card">
-          <span class="problem-banner__num">04</span>
-          <strong class="problem-banner__title">Can you prove the log is intact?</strong>
-          <p class="problem-banner__desc">SOX, PCI-DSS and SR 11-7 demand tamper-evident records. Plaintext logs and shared buckets don't qualify.</p>
-        </div>
+        <NumberedCard
+          number="01"
+          title="Who wrote this line?"
+          description="EU AI Act & SR 11-7 require attribution of model-assisted output. git blame points at the developer, not the model."
+        />
+        <NumberedCard
+          number="02"
+          title="Was the policy enforced?"
+          description="Model allowlists, forbidden paths, token budgets, required tools — if enforcement isn't automated, it isn't happening."
+        />
+        <NumberedCard
+          number="03"
+          title="Where did the spend go?"
+          description="AI invoices scale per token, per team, per cache miss. Without session-level attribution, FinOps is guesswork."
+        />
+        <NumberedCard
+          number="04"
+          title="Can you prove the log is intact?"
+          description="SOX, PCI-DSS and SR 11-7 demand tamper-evident records. Plaintext logs and shared buckets don't qualify."
+        />
       </div>
     </div>
   </section>
@@ -65,24 +64,30 @@ const base = import.meta.env.BASE_URL;
         <h2 class="section-heading">The compliance clock is ticking</h2>
       </div>
       <p class="section-subtitle">
-        Why governance of AI-assisted code is no longer optional &mdash; every number below links to the source.
+        Why governance of AI-assisted code is no longer optional — every number below links to the source.
       </p>
       <div class="evidence-strip__grid">
-        <a href="https://artificialintelligenceact.eu/article/99/" class="evidence-stat">
-          <span class="evidence-stat__value">€35M</span>
-          <span class="evidence-stat__label">maximum EU AI Act penalty &mdash; or 7% of worldwide turnover &mdash; for prohibited AI practices or governance failures.</span>
-          <span class="evidence-stat__source">EU AI Act, Article 99</span>
-        </a>
-        <a href="https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm" class="evidence-stat">
-          <span class="evidence-stat__value">SR 11-7</span>
-          <span class="evidence-stat__label">Federal Reserve mandates full model inventory, version control, use logs and independent validation &mdash; now applied to coding copilots by bank risk teams.</span>
-          <span class="evidence-stat__source">Federal Reserve / OCC Model Risk Guidance</span>
-        </a>
-        <a href="https://www.sec.gov/ibapd-archive/historicalarchive/sox-2002.pdf" class="evidence-stat">
-          <span class="evidence-stat__value">SOX §404</span>
-          <span class="evidence-stat__label">public issuers must evidence controls over the software that processes financial data &mdash; including the AI agents that now write it.</span>
-          <span class="evidence-stat__source">Sarbanes-Oxley, Section 404</span>
-        </a>
+        <StatCard
+          value="€35M"
+          label="maximum EU AI Act penalty — or 7% of worldwide turnover — for prohibited AI practices or governance failures."
+          source="EU AI Act, Article 99"
+          color="green"
+          href="https://artificialintelligenceact.eu/article/99/"
+        />
+        <StatCard
+          value="SR 11-7"
+          label="Federal Reserve mandates full model inventory, version control, use logs and independent validation — now applied to coding copilots by bank risk teams."
+          source="Federal Reserve / OCC Model Risk Guidance"
+          color="blue"
+          href="https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm"
+        />
+        <StatCard
+          value="SOX §404"
+          label="public issuers must evidence controls over the software that processes financial data — including the AI agents that now write it."
+          source="Sarbanes-Oxley, Section 404"
+          color="amber"
+          href="https://www.sec.gov/ibapd-archive/historicalarchive/sox-2002.pdf"
+        />
       </div>
     </div>
   </section>
@@ -92,53 +97,11 @@ const base = import.meta.env.BASE_URL;
     <div class="pillars-section__inner">
       <h2 class="section-heading">Three pillars, one ledger</h2>
       <p class="section-subtitle">
-        See what AI does. Track what it costs. Prove it to a regulator &mdash; all from the
+        See what AI does. Track what it costs. Prove it to a regulator — all from the
         same signed chain, so the three stories never disagree.
       </p>
       <div class="pillars-grid pillars-grid--three">
-        <div class="pillar-card">
-          <svg class="pillar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>
-          <span class="pillar-card__label">Visibility</span>
-          <h3 class="pillar-card__title">See every AI-assisted change</h3>
-          <p class="pillar-card__desc">
-            Full session traces, tool calls and line-level AI attribution, overlaid on the
-            git history. You can answer &ldquo;which model wrote this line, under which prompt?&rdquo;
-            without opening a ticket with the vendor.
-          </p>
-          <p class="pillar-card__meta">Session traces &middot; tool calls &middot; git-level attribution</p>
-        </div>
-        <div class="pillar-card">
-          <svg class="pillar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 3v18h18"/>
-            <path d="M7 15l4-4 3 3 6-7"/>
-            <path d="M14 7h6v6"/>
-          </svg>
-          <span class="pillar-card__label">Cost Tracking</span>
-          <h3 class="pillar-card__title">FinOps for AI-assisted code</h3>
-          <p class="pillar-card__desc">
-            Token trends, model distribution, cache hit-rate and spend attributed to session,
-            author, team and PR. Hard per-session and per-team budgets stop runaway sessions
-            before they land on the invoice.
-          </p>
-          <p class="pillar-card__meta">Per-PR spend &middot; cache savings &middot; hard budgets</p>
-        </div>
-        <div class="pillar-card">
-          <svg class="pillar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 2 3 6v6c0 5 3.8 9.4 9 10 5.2-.6 9-5 9-10V6l-9-4z"/>
-            <path d="m9 12 2 2 4-4"/>
-          </svg>
-          <span class="pillar-card__label">Compliance</span>
-          <h3 class="pillar-card__title">Signed evidence, enforced policy</h3>
-          <p class="pillar-card__desc">
-            Every entry is hash-chained and Ed25519-signed. Policy &mdash; allowlists, forbidden
-            paths, required tools, AI-share caps &mdash; is enforced in the dev loop and logged
-            on the same chain. Mapped to EU AI Act, SR 11-7, SOX &sect;404, PCI-DSS, DORA.
-          </p>
-          <p class="pillar-card__meta">Ed25519 &middot; append-only &middot; framework-mapped</p>
-        </div>
+        <PillarCards client:load />
       </div>
     </div>
   </section>
@@ -147,7 +110,7 @@ const base = import.meta.env.BASE_URL;
   <section class="spotlight-section" id="tracevault">
     <div class="spotlight-section__inner">
       <div class="spotlight-section__copy">
-        <span class="kicker">TraceVault &middot; VirtusLab</span>
+        <span class="kicker">TraceVault · VirtusLab</span>
         <h2>A flight recorder for AI-assisted development</h2>
         <p>
           TraceVault is the open-source building block underneath Visdom Governance. It sits in the
@@ -156,20 +119,20 @@ const base = import.meta.env.BASE_URL;
         </p>
         <p>
           <strong>See.</strong> Every session, prompt, model &amp; version, tool call, edited file
-          and resulting commit is captured &mdash; with automatic secret redaction. A git-integrated
+          and resulting commit is captured — with automatic secret redaction. A git-integrated
           browser overlays AI attribution line by line, so visibility isn't a separate report but a
           layer on the code you already read.
         </p>
         <p>
           <strong>Count.</strong> The same ledger powers dashboards for token trends, model
           distribution, cache hit-rate and cost per team / per PR. Hard per-session and per-team
-          budgets cut off runaway sessions at the edge &mdash; the FinOps number is the audit number.
+          budgets cut off runaway sessions at the edge — the FinOps number is the audit number.
         </p>
         <p>
           <strong>Prove.</strong> Entries are hashed, chained and Ed25519-signed; the log is
           append-only, so a single altered byte breaks the chain. Policy (allowlists, forbidden
           paths, required tools, AI-share caps) is enforced in the dev loop and logged on the same
-          chain &mdash; producing framework-mapped evidence instead of a "did the policy run?" gap.
+          chain — producing framework-mapped evidence instead of a "did the policy run?" gap.
         </p>
         <p>
           Open source, self-hosted, free forever for the community edition. The enterprise edition
@@ -180,36 +143,17 @@ const base = import.meta.env.BASE_URL;
           <a href="https://tracevault.dev/" class="btn btn--outline">tracevault.dev &rarr;</a>
         </p>
       </div>
-      <div class="ledger-diagram" aria-hidden="true">
-        <div class="ledger-diagram__row">
-          <span>session #8421 &middot; claude-sonnet-4-6</span>
-          <span class="ledger-diagram__pill ledger-diagram__pill--log">captured</span>
-        </div>
-        <div class="ledger-diagram__row">
-          <span>tokens: 38.2k in / 9.4k out &middot; cache 71%</span>
-          <span class="ledger-diagram__pill ledger-diagram__pill--cost">$0.42</span>
-        </div>
-        <div class="ledger-diagram__row">
-          <span>model gpt-5-foo not on allowlist</span>
-          <span class="ledger-diagram__pill ledger-diagram__pill--block">blocked</span>
-        </div>
-        <div class="ledger-diagram__row">
-          <span>edit src/auth/keys.ts &middot; protected path</span>
-          <span class="ledger-diagram__pill ledger-diagram__pill--block">blocked</span>
-        </div>
-        <div class="ledger-diagram__row">
-          <span>AI share 142 lines &middot; PR cap 60%</span>
-          <span class="ledger-diagram__pill ledger-diagram__pill--enforce">enforced</span>
-        </div>
-        <div class="ledger-diagram__row">
-          <span>team budget: 412k / 500k tokens</span>
-          <span class="ledger-diagram__pill ledger-diagram__pill--cost">tracked</span>
-        </div>
-        <div class="ledger-diagram__row">
-          <span>Ed25519 signature &middot; chain ok</span>
-          <span class="ledger-diagram__pill ledger-diagram__pill--sign">signed</span>
-        </div>
-      </div>
+      <StatusDiagram
+        rows={[
+          { label: "session #8421 · claude-sonnet-4-6", status: "captured", variant: "success" },
+          { label: "tokens: 38.2k in / 9.4k out · cache 71%", status: "$0.42", variant: "info" },
+          { label: "model gpt-5-foo not on allowlist", status: "blocked", variant: "danger" },
+          { label: "edit src/auth/keys.ts · protected path", status: "blocked", variant: "danger" },
+          { label: "AI share 142 lines · PR cap 60%", status: "enforced", variant: "warning" },
+          { label: "team budget: 412k / 500k tokens", status: "tracked", variant: "neutral" },
+          { label: "Ed25519 signature · chain ok", status: "signed", variant: "success" },
+        ]}
+      />
     </div>
   </section>
 
@@ -229,7 +173,7 @@ const base = import.meta.env.BASE_URL;
         <ul class="visibility-features">
           <li>
             <span class="visibility-feature__title">Token usage trends</span>
-            <span class="visibility-feature__desc">Daily and weekly consumption, broken out by model, team and repo &mdash; not a single monthly number.</span>
+            <span class="visibility-feature__desc">Daily and weekly consumption, broken out by model, team and repo — not a single monthly number.</span>
           </li>
           <li>
             <span class="visibility-feature__title">Cost tracking</span>
@@ -237,7 +181,7 @@ const base = import.meta.env.BASE_URL;
           </li>
           <li>
             <span class="visibility-feature__title">Cache savings</span>
-            <span class="visibility-feature__desc">Hit-rate per model and per project &mdash; surface the prompts that are quietly doubling the bill.</span>
+            <span class="visibility-feature__desc">Hit-rate per model and per project — surface the prompts that are quietly doubling the bill.</span>
           </li>
           <li>
             <span class="visibility-feature__title">Model distribution</span>
@@ -245,7 +189,7 @@ const base = import.meta.env.BASE_URL;
           </li>
           <li>
             <span class="visibility-feature__title">Team &amp; author activity</span>
-            <span class="visibility-feature__desc">Adoption and throughput per team, with attribution by author &mdash; not a seat count.</span>
+            <span class="visibility-feature__desc">Adoption and throughput per team, with attribution by author — not a seat count.</span>
           </li>
           <li>
             <span class="visibility-feature__title">AI share of code</span>
@@ -279,7 +223,7 @@ const base = import.meta.env.BASE_URL;
             />
             <figcaption class="dashboard-figure__caption">
               <span class="dashboard-figure__tag">dark</span>
-              Same view, dark theme &mdash; drops into existing IDE / ops screens
+              Same view, dark theme — drops into existing IDE / ops screens
             </figcaption>
           </figure>
           <p class="dashboard-gallery__note">
@@ -299,51 +243,51 @@ const base = import.meta.env.BASE_URL;
             <span class="partner-card__logo-mark" aria-hidden="true"></span>
             What You Get
           </span>
-          <span class="partner-card__kicker">Three tracks &middot; one ledger</span>
+          <span class="partner-card__kicker">Three tracks · one ledger</span>
         </div>
-        <h3 class="partner-card__title">Compliance, policy and cost &mdash; off a single source of truth</h3>
+        <h3 class="partner-card__title">Compliance, policy and cost — off a single source of truth</h3>
         <p class="partner-card__lede">
           Visdom Governance doesn't invent a new framework or a new dashboard silo. The same signed
           TraceVault ledger feeds your auditors, your platform team's guardrails, and your FinOps
-          numbers &mdash; so the three stories never disagree.
+          numbers — so the three stories never disagree.
         </p>
 
         <div class="partner-card__grid">
-          <div class="partner-capability">
-            <span class="partner-capability__abbr">EU AI ACT</span>
-            <h4 class="partner-capability__title">Transparency &amp; attribution</h4>
-            <p class="partner-capability__desc">Which model produced which output, under which prompt &mdash; for every AI-assisted change.</p>
-          </div>
-          <div class="partner-capability">
-            <span class="partner-capability__abbr">SR 11-7</span>
-            <h4 class="partner-capability__title">Model inventory &amp; use</h4>
-            <p class="partner-capability__desc">Full record of models in use, versions, and every decision the organization made with them.</p>
-          </div>
-          <div class="partner-capability">
-            <span class="partner-capability__abbr">SOX &sect;404</span>
-            <h4 class="partner-capability__title">Change controls on code</h4>
-            <p class="partner-capability__desc">Evidence that policies governing AI-assisted code changes were enforced, not merely written down.</p>
-          </div>
-          <div class="partner-capability">
-            <span class="partner-capability__abbr">POLICY</span>
-            <h4 class="partner-capability__title">Allowlists &amp; forbidden paths</h4>
-            <p class="partner-capability__desc">Approved models only. Sensitive directories off-limits. Required tools present. Blocks logged.</p>
-          </div>
-          <div class="partner-capability">
-            <span class="partner-capability__abbr">BUDGETS</span>
-            <h4 class="partner-capability__title">Per-session &amp; per-team caps</h4>
-            <p class="partner-capability__desc">Hard token budgets and AI-share thresholds stop runaway sessions before they become an invoice line.</p>
-          </div>
-          <div class="partner-capability">
-            <span class="partner-capability__abbr">FINOPS</span>
-            <h4 class="partner-capability__title">Spend attribution</h4>
-            <p class="partner-capability__desc">Token trends, model mix, cache hit-rate, cost per team and per PR &mdash; tied back to the session that caused them.</p>
-          </div>
+          <FeatureCard
+            abbreviation="EU AI ACT"
+            title="Transparency & attribution"
+            description="Which model produced which output, under which prompt — for every AI-assisted change."
+          />
+          <FeatureCard
+            abbreviation="SR 11-7"
+            title="Model inventory & use"
+            description="Full record of models in use, versions, and every decision the organization made with them."
+          />
+          <FeatureCard
+            abbreviation="SOX §404"
+            title="Change controls on code"
+            description="Evidence that policies governing AI-assisted code changes were enforced, not merely written down."
+          />
+          <FeatureCard
+            abbreviation="POLICY"
+            title="Allowlists & forbidden paths"
+            description="Approved models only. Sensitive directories off-limits. Required tools present. Blocks logged."
+          />
+          <FeatureCard
+            abbreviation="BUDGETS"
+            title="Per-session & per-team caps"
+            description="Hard token budgets and AI-share thresholds stop runaway sessions before they become an invoice line."
+          />
+          <FeatureCard
+            abbreviation="FINOPS"
+            title="Spend attribution"
+            description="Token trends, model mix, cache hit-rate, cost per team and per PR — tied back to the session that caused them."
+          />
         </div>
 
         <p class="partner-card__note">
           Pluggable where it needs to be. The signed ledger feeds your GRC tool, your observability
-          stack and your cloud cost dashboard &mdash; no duplicate pipelines.
+          stack and your cloud cost dashboard — no duplicate pipelines.
         </p>
       </div>
     </div>
@@ -358,33 +302,33 @@ const base = import.meta.env.BASE_URL;
       </div>
       <p class="section-subtitle">
         Plenty of point tools exist for each track. Visdom Governance is what happens when audit,
-        enforcement and FinOps come off the same signed ledger &mdash; so they can't drift.
+        enforcement and FinOps come off the same signed ledger — so they can't drift.
       </p>
       <div class="alt-grid">
-        <div class="alt-card">
-          <p class="alt-card__label">Visibility + Compliance</p>
-          <h3 class="alt-card__title">vs audit / policy alternatives</h3>
-          <ul class="alt-card__list">
-            <li><strong>Vendor dashboards</strong> &mdash; usage per seat; not tamper-proof, not portable, not a policy engine.</li>
-            <li><strong>Policy PDFs</strong> &mdash; "developers must only use approved models." Unenforced by definition.</li>
-            <li><strong>Git hooks / DLP</strong> &mdash; catch one slice, after the fact, with no record of the policy in force at the time.</li>
-            <li><strong>TraceVault</strong> &mdash; open source, Ed25519-signed hash chain; session + tool + code + attribution; enforces policy in the dev loop.</li>
-          </ul>
-        </div>
-        <div class="alt-card">
-          <p class="alt-card__label">Cost Tracking</p>
-          <h3 class="alt-card__title">vs FinOps alternatives</h3>
-          <ul class="alt-card__list">
-            <li><strong>Vendor billing CSV</strong> &mdash; monthly total per workspace; no attribution to team, PR or session.</li>
-            <li><strong>Cloud cost tools</strong> &mdash; solve infrastructure spend; blind to token economics and cache behaviour.</li>
-            <li><strong>Spreadsheet tracking</strong> &mdash; out of date the day after it's exported; no hard budget enforcement.</li>
-            <li><strong>TraceVault</strong> &mdash; per-session spend attribution, cache hit-rate, hard team budgets &mdash; signed into the same chain.</li>
-          </ul>
-        </div>
+        <ComparisonCard
+          label="Visibility + Compliance"
+          title="vs audit / policy alternatives"
+          items={[
+            "Vendor dashboards — usage per seat; not tamper-proof, not portable, not a policy engine.",
+            "Policy PDFs — \"developers must only use approved models.\" Unenforced by definition.",
+            "Git hooks / DLP — catch one slice, after the fact, with no record of the policy in force at the time.",
+            "TraceVault — open source, Ed25519-signed hash chain; session + tool + code + attribution; enforces policy in the dev loop.",
+          ]}
+        />
+        <ComparisonCard
+          label="Cost Tracking"
+          title="vs FinOps alternatives"
+          items={[
+            "Vendor billing CSV — monthly total per workspace; no attribution to team, PR or session.",
+            "Cloud cost tools — solve infrastructure spend; blind to token economics and cache behaviour.",
+            "Spreadsheet tracking — out of date the day after it's exported; no hard budget enforcement.",
+            "TraceVault — per-session spend attribution, cache hit-rate, hard team budgets — signed into the same chain.",
+          ]}
+        />
       </div>
       <p class="alt-section__footnote">
-        The building block is pluggable. The requirement &mdash; one signed source of truth for
-        what AI did, what it was allowed to do, and what it cost &mdash; is not.
+        The building block is pluggable. The requirement — one signed source of truth for
+        what AI did, what it was allowed to do, and what it cost — is not.
       </p>
     </div>
   </section>
@@ -393,100 +337,22 @@ const base = import.meta.env.BASE_URL;
   <section class="faq-section" id="faq">
     <div class="faq-section__inner">
       <h2 class="section-heading">FAQ</h2>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary class="faq-item__q">We already log Copilot usage. Isn't that enough?</summary>
-          <div class="faq-item__a">
-            <p>
-              Vendor dashboards answer "how many sessions per seat this quarter?". They don't answer
-              "which prompt, model and tool call wrote <code>src/billing/tax.ts:42</code>", they don't
-              enforce your allowlist before a prompt leaves the machine, and they don't attribute token
-              spend to the PR that caused it. You need all three to run an AI-assisted SDLC honestly.
-            </p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">We're not in a regulated industry. Do we still care?</summary>
-          <div class="faq-item__a">
-            <p>
-              Compliance is one driver, not the only one. The same ledger is what stops a well-meaning
-              engineer from pasting your private repo into an unapproved model, and it's what lets
-              finance see that one team's cache hit-rate collapsed and doubled the bill last month.
-              Regulation accelerates the decision; cost and risk hygiene make the business case either way.
-            </p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">Does my team have to change how they work?</summary>
-          <div class="faq-item__a">
-            <p>
-              No. TraceVault wraps the developer's existing AI CLI / IDE and writes to a local signed log.
-              Policy is a YAML file in the repo &mdash; the same place other quality rules already live.
-              The only observable change is that out-of-policy actions (model not allowed, forbidden
-              path, over budget) are blocked before they ship, with a clear reason.
-            </p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">How does this map to the EU AI Act specifically?</summary>
-          <div class="faq-item__a">
-            <p>
-              The Act obliges providers and deployers to demonstrate traceability and human oversight of
-              AI systems, and to produce technical documentation on request. For AI-assisted coding that
-              translates into: which model, which prompt, which files, by whom, under which policy &mdash;
-              all items TraceVault captures by default. Penalties under Article 99 reach &euro;35M or
-              7% of global turnover, so "we'll sort it out later" is an expensive posture.
-            </p>
-          </div>
-        </details>
-        <details class="faq-item">
-          <summary class="faq-item__q">Is TraceVault proprietary? Where does my data live?</summary>
-          <div class="faq-item__a">
-            <p>
-              TraceVault is open source and self-hosted by default; the signed ledger never leaves your
-              infrastructure unless you route it there. The enterprise edition adds SSO, analytics,
-              auditor RBAC and compliance report templates &mdash; same storage model, same
-              open-source core.
-            </p>
-          </div>
-        </details>
-      </div>
+      <GovernanceFaq client:load />
     </div>
   </section>
 
   <div class="seal-divider" aria-hidden="true"></div>
 
   <!-- ============ Visdom Strip ============ -->
-  <section class="visdom-strip">
-    <div class="visdom-strip__inner">
-      <div class="visdom-strip__label">
-        <span class="kicker" style="margin-bottom: 0;">Part of Visdom</span>
-        <p class="visdom-strip__desc">VirtusLab's AI-Native SDLC</p>
-      </div>
-      <div class="visdom-strip__items">
-        <a href="https://github.com/virtuslab/vidia" class="visdom-strip__item">
-          <span class="visdom-strip__item-name">ViDIA</span>
-          <span class="visdom-strip__item-role">Context Fabric</span>
-        </a>
-        <a href="https://virtuslab.github.io/visdom-code-review/" class="visdom-strip__item">
-          <span class="visdom-strip__item-name">VCR</span>
-          <span class="visdom-strip__item-role">Code Review</span>
-        </a>
-        <a href="https://virtuslab.github.io/visdom-testing/" class="visdom-strip__item">
-          <span class="visdom-strip__item-name">Testing</span>
-          <span class="visdom-strip__item-role">Quality Assurance</span>
-        </a>
-        <a href="https://virtuslab.github.io/visdom-security/" class="visdom-strip__item">
-          <span class="visdom-strip__item-name">Security</span>
-          <span class="visdom-strip__item-role">Sandbox &amp; AppSec</span>
-        </a>
-        <a href={`${base}`} class="visdom-strip__item visdom-strip__item--active">
-          <span class="visdom-strip__item-name">Governance</span>
-          <span class="visdom-strip__item-role">Visibility, Cost &amp; Compliance</span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <VisdomStrip
+    products={[
+      { name: "ViDIA", role: "Context Fabric", href: "https://github.com/virtuslab/vidia" },
+      { name: "VCR", role: "Code Review", href: "https://virtuslab.github.io/visdom-code-review/" },
+      { name: "Testing", role: "Quality Assurance", href: "https://virtuslab.github.io/visdom-testing/" },
+      { name: "Security", role: "Sandbox & AppSec", href: "https://virtuslab.github.io/visdom-security/" },
+      { name: "Governance", role: "Visibility, Cost & Compliance", href: base, active: true },
+    ]}
+  />
 
   <!-- ============ CTA ============ -->
   <section class="cta-section">
