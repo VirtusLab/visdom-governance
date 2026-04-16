@@ -1,23 +1,24 @@
 # Visdom Governance
 
-**Audit trail + policy enforcement + FinOps for AI-assisted development.**
+**Visibility + cost tracking + compliance for AI-assisted development.**
 
 Sibling of [Visdom Code Review](https://github.com/VirtusLab/visdom-code-review),
 [Visdom Testing](https://github.com/VirtusLab/visdom-testing) and
-[Visdom Security](https://github.com/VirtusLab/visdom-security). Three jobs off
-one signed ledger:
+[Visdom Security](https://github.com/VirtusLab/visdom-security). Three pillars
+off one signed ledger:
 
-1. **Evidence** &mdash; Ed25519-signed, hash-chained capture of every AI session,
-   prompt, model, tool call and edited file, with automatic secret redaction.
+1. **Visibility** &mdash; full session traces, tool calls and line-level AI
+   attribution overlaid on git history.
 
-2. **Enforcement** &mdash; model allowlists, sensitive-path guards, required tools,
-   token budgets and AI-share thresholds, applied at the developer's terminal.
+2. **Cost tracking** &mdash; token trends, model distribution, cache hit-rate,
+   per-team / per-PR spend attribution, hard budgets.
 
-3. **Economics** &mdash; token trends, model distribution, cache hit-rate and
-   per-team / per-PR spend attribution.
+3. **Compliance** &mdash; Ed25519-signed, hash-chained records and dev-loop
+   policy enforcement (allowlists, forbidden paths, required tools, AI-share
+   caps), mapped to EU AI Act, SR 11-7, SOX &sect;404, PCI-DSS, DORA.
 
-Powered by [TraceVault](https://tracevault.dev/), the open-source building block
-underneath Visdom Governance.
+Powered by [TraceVault](https://tracevault.dev/), the open-source building
+block underneath Visdom Governance.
 
 ## Develop
 
