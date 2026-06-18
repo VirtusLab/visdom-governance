@@ -97,7 +97,7 @@ export function GovernanceVisdomStrip({ base }: GovernanceVisdomStripProps) {
       subtitle={
         <>
           Visdom Governance is one of four components in{" "}
-          <a href="https://virtuslab.com/services/visdom">Visdom</a>,
+          <a href="https://visdom.virtuslab.com">Visdom</a>,
           VirtusLab&apos;s AI-Native SDLC.
         </>
       }
@@ -106,7 +106,7 @@ export function GovernanceVisdomStrip({ base }: GovernanceVisdomStripProps) {
           role: "Context Fabric",
           name: "ViDIA",
           description: "Pre-indexed code expertise, dependency graphs, PR history",
-          href: "https://github.com/virtuslab/vidia",
+          href: undefined,
           active: false,
         },
         {
@@ -134,7 +134,7 @@ export function GovernanceVisdomStrip({ base }: GovernanceVisdomStripProps) {
       footer={
         <>
           Read the thinking behind it:{" "}
-          <a href="https://virtuslab.com/services/visdom">The AI-Native SDLC series</a>
+          <a href="https://visdom.virtuslab.com">The AI-Native SDLC series</a>
         </>
       }
     />
