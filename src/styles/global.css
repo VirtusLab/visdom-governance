@@ -1,11 +1,15 @@
 @import "tailwindcss";
+@import "@virtuslab/visdom-ui/styles.css";
 
 @source "../../node_modules/@virtuslab/visdom-ui/dist";
 
+@custom-variant dark (&:is(.dark *));
+
 @theme {
-  --color-visdom-blue: #3b82f6;
-  --color-visdom-blue-light: #eff6ff;
-  --color-visdom-blue-dark: #2563eb;
+  /* Governance uses crimson for accent links (not blue like other Visdom sites) */
+  --color-visdom-blue: #b91c1c;        /* red-700 */
+  --color-visdom-blue-light: #fee2e2;  /* red-100 */
+  --color-visdom-blue-dark: #7f1d1d;   /* red-900 */
   --color-visdom-gray-50: #f9fafb;
   --color-visdom-gray-100: #f3f4f6;
   --color-visdom-gray-200: #e5e7eb;
@@ -30,6 +34,37 @@
   --ring: oklch(0.577 0.245 27.325);
   --accent: oklch(0.94 0.02 25);
   --accent-foreground: oklch(0.45 0.15 25);
+}
+
+/* Dark sections: flip DS tokens so NumberedCard / FaqAccordion / FeatureCard
+   render with light foreground on the ledger-themed dark backgrounds. */
+.dark {
+  --background: oklch(0.13 0.005 260);
+  --foreground: oklch(0.93 0.005 250);
+  --card: oklch(0.17 0.008 260);
+  --card-foreground: oklch(0.93 0.005 250);
+  --muted: oklch(0.21 0.01 260);
+  --muted-foreground: oklch(0.72 0.01 250);
+  --border: oklch(1 0 0 / 12%);
+  --primary: oklch(0.68 0.22 25);                /* brighter crimson on dark */
+  --primary-foreground: oklch(1 0 0);
+  --ring: oklch(0.68 0.22 25);
+  --accent: oklch(0.21 0.01 260);
+  --accent-foreground: oklch(0.93 0.005 250);
+}
+
+/* Legacy DS builds hardcoded text-blue-* for accent labels. Remap to the
+   Governance crimson palette so no component slips back to Visdom blue. */
+.text-blue-600 { color: var(--color-visdom-blue) !important; }
+.text-blue-500 { color: var(--color-visdom-blue) !important; }
+.text-blue-400 { color: oklch(0.68 0.22 25) !important; }
+.bg-blue-500 { background-color: var(--color-visdom-blue) !important; }
+.bg-blue-600 { background-color: var(--color-visdom-blue) !important; }
+
+/* Nav brand: reset the global link color so "Visdom" reads as a brand wordmark. */
+nav a.no-underline,
+nav a.no-underline:hover {
+  color: var(--color-visdom-gray-900);
 }
 
 @layer base {
